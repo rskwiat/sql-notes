@@ -1,6 +1,6 @@
 # SQL Notes
 
-Notes / cheetsheet for remebering SQL commands.
+Notes / cheetsheet for remembering SQL commands.
 
 ## Creating a Table
 
