@@ -93,7 +93,7 @@ Joing data from two datbases, `column1` and `columnA` are from two different DBs
 ```
 SELECT column1, columnA
 FROM table1
-JOIN table2 ON columnA.id === table1.ex_id,
+JOIN table2 ON columnA.id = table1.ex_id,
 ```
 
 #### Left Outer Join
@@ -102,7 +102,7 @@ Anything that does not match we will not drop it, anything from `table1` without
 ```
 SELECT column1, columnA
 FROM table1
-LEFT JOIN table2 ON columnA.id === table1.ex_id,
+LEFT JOIN table2 ON columnA.id = table1.ex_id,
 ```
 
 #### Right Outer Join
@@ -111,7 +111,7 @@ Any unmatched joins will be dropped, anything from `table2` will be joined.
 ```
 SELECT column1, columnA
 FROM table1
-RIGHT JOIN table2 ON columnA.id === table1.ex_id,
+RIGHT JOIN table2 ON columnA.id = table1.ex_id,
 ```
 
 #### Full Joins
@@ -121,6 +121,41 @@ Nothing will be throw away, all relevant columns will be set with a value of `nu
 ```
 SELECT column1, columnA
 FROM table1
-FULL JOIN table2 ON columnA.id === table1.ex_id,
+FULL JOIN table2 ON columnA.id = table1.ex_id,
+```
+#### Three Way Joins
+
+`columnAlpha` is from a third table, 
+
+```
+SELECT column1, columnA, columnAlpha
+FROM table1
+JOIN table2 ON columnA.id = table1.ex_id,
+JOIN table3 ON table3.ex_id = table2.user_id AND table3.id = columnA.ex_id
 ```
 
+## Grouping and Aggregates
+
+### Grouping
+Reduces many rows down to a few rows, done by using the `GROUP BY` keyword. 
+
+Example Table:
+    +-------------+--------------+-------+------------+
+    | name        | manufacturer | price | units_sold |
+    +-------------+--------------+-------+------------+
+    | N1280       | Nokia        | 199   | 1925       |
+    +-------------+--------------+-------+------------+
+    | Iphone 4    | Apple        | 399   | 9436       |
+    +-------------+--------------+-------+------------+
+    | Galaxy S    | Samsung      | 299   | 2359       |
+    +-------------+--------------+-------+------------+
+
+```
+  SELECT manufacturer
+  FROM phones
+  GROUP BY manufacturer;
+```
+
+
+### Aggregates
+Reduces many values down to one, done by using `aggregate` functions
