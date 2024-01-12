@@ -2,6 +2,8 @@
 
 Notes / cheetsheet for remembering SQL commands.
 
+Postgresql strings require single-quotes
+
 ## Creating a Table
 
 ```
@@ -140,6 +142,7 @@ JOIN table3 ON table3.ex_id = table2.user_id AND table3.id = columnA.ex_id
 Reduces many rows down to a few rows, done by using the `GROUP BY` keyword. 
 
 Example Table:
+```
     +-------------+--------------+-------+------------+
     | name        | manufacturer | price | units_sold |
     +-------------+--------------+-------+------------+
@@ -149,6 +152,7 @@ Example Table:
     +-------------+--------------+-------+------------+
     | Galaxy S    | Samsung      | 299   | 2359       |
     +-------------+--------------+-------+------------+
+```
 
 ```
   SELECT manufacturer
@@ -159,3 +163,9 @@ Example Table:
 
 ### Aggregates
 Reduces many values down to one, done by using `aggregate` functions
+
+- `COUNT(num)` -> Returns the number of values in a group
+- `SUM(num)` -> Finds the sum of a group of numbers
+- `AVG(num)` -> Finds the average of a group of numbers
+- `MIN(num)` -> Finds the minimum value of a group of numbers
+- `MAX(num)` -> Finds the maximum value of a group of numbers
